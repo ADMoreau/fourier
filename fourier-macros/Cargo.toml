@@ -1,9 +1,9 @@
 [package]
-name = "fourier"
+name = "fourier-macros"
 version = "0.1.0"
 authors = ["Caleb Zulawski <caleb.zulawski@gmail.com>"]
 license = "MIT OR Apache-2.0"
-description = "Fast Fourier transforms (FFTs)"
+description = "Helper macros for the Fourier crate"
 repository = "https://github.com/calebzulawski/fourier"
 categories = ["algorithms", "mathematics", "multimedia::audio", "science"]
 readme = "README.md"
@@ -19,21 +19,16 @@ include = [
 ]
 keywords = ["fft", "fourier", "transform"]
 
+[lib]
+proc-macro = true
+
 [features]
 default = ["std"]
-std = ["fourier-algorithms/std", "fourier-macros/std"]
-alloc = []
+std = ["fourier-algorithms/std"]
 
 [dependencies]
-fourier-algorithms = { path = "../fourier-algorithms", version = "0.1.0", default-features = false }
-fourier-macros = { path = "../fourier-macros", version = "0.1.0", default-features = false }
+syn = "1"
+quote = "1"
+proc-macro2 = "1"
 num-complex = { version = "0.2", default-features = false }
-
-[dev-dependencies]
-num-traits = { version = "0.2", default-features = false, features = ["libm"] }
-float-cmp = "0.6"
-rand = "0.7"
-rand_distr = "0.2"
-
-[lib]
-crate-type = ["cdylib", "rlib"]
+fourier-algorithms = { path = "../fourier-algorithms", version = "0.1.0", default-features = false }
