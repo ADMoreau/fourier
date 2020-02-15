@@ -7,6 +7,7 @@ members = [
     "fourier-ffi",
     "fourier-macros",
     "fourier-prof",
+    "fourier-wasm"
 ]
 
 [profile.release]
